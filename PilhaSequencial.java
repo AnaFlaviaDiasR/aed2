@@ -128,6 +128,10 @@ class Series{
             }
             if(linhaEntrada.charAt(i)!='<'){
                 resposta += linhaEntrada.charAt(i);
+            }else {
+                while (linhaEntrada.charAt(i)!='>') {
+                    i++;
+                }
             }
         }
   
@@ -140,7 +144,7 @@ class Series{
 
     public String removeUnderLine(String linhaEntrada){
         String resposta = "";
-        for(int i = 0; i <= linhaEntrada.length(); i++){
+        for(int i = 0; i < linhaEntrada.length(); i++){
             if(linhaEntrada.charAt(i) == ' '){
                 resposta += ' ';
             }else{
@@ -261,7 +265,7 @@ class Pilha {
      */
     public void inserir(Series x) throws Exception {
         //validar insercao
-        if(topo > array.length){
+        if(topo >= array.length){
             throw new Exception("Erro ao inserir!");
         }
         array[topo] = x.clone();
